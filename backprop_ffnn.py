@@ -7,14 +7,16 @@ Created on Wed Nov  6 19:00:37 2019
 
 from ffnn import *
 import numpy as np
+import time
+
 
 class Backprop_FFNN(FFNN):
     
-    def __init__(self, layout=False,synapsefile=False,neuronfile=False):
-        FFNN.__init__(self,layout,synapsefile,neuronfile)
+    def __init__(self, layout=False,savefile=False):
+        FFNN.__init__(self,layout,savefile)
     
-    def save(self,synapsename,neuronname):
-        FFNN.save(self,synapsename,neuronname)
+    def save(self,savename):
+        FFNN.save(self,savename)
     
     def evaluate(self, inputs):
         return FFNN.evaluate(self,inputs)
@@ -32,13 +34,13 @@ class Backprop_FFNN(FFNN):
                 self.err=np.dot(self.delta,self.synapses[-i].T) #calculate the error coming from the previous layer to propagate through again and again until all layers are readjusted
             return initerr #return error to give useful data to user
     
-    def train(self,inputs,outputs,alpha=0.1,n=100):
+    
+    def train(self,inputs,outputs,alpha=0.3,n=1000,runprint=1000):
+        tm=time.time()
         for i in range(n):
-            if i%100==0:
-                print(i)
+            if i%runprint==0:
+                print("Training Run No.",i)
             for e in range(len(inputs)):
                 self.evaluate(inputs[e])
                 a=self.backprop(outputs[e],alpha)
-                if i%10000==0:
-                    print(a)
-                    pass
+        print(time.time()-tm)
