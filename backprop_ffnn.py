@@ -5,21 +5,22 @@ Created on Wed Nov  6 19:00:37 2019
 @author: kka4718
 """
 
-from ffnn import *
+from ffnninter import *
 import numpy as np
 import time
 
 
-class Backprop_FFNN(FFNN):
+class Backprop_FFNN(NNinter):
     
     def __init__(self, layout=False,savefile=False):
-        FFNN.__init__(self,layout,savefile)
+        super(Backprop_FFNN,self).__init__(layout,savefile)
+        self.err="N/A"
     
     def save(self,savename):
-        FFNN.save(self,savename)
+        super(Backprop_FFNN,self).save(savename)
     
-    def evaluate(self, inputs):
-        return FFNN.evaluate(self,inputs)
+    def evaluate(self, inputs,draw=False):
+        return super(Backprop_FFNN,self).evaluate(inputs,draw)
     
     
     def backprop(self,outputs,alpha):  #backpropagation of the error to adjust weights
@@ -41,6 +42,9 @@ class Backprop_FFNN(FFNN):
             if i%runprint==0:
                 print("Training Run No.",i)
             for e in range(len(inputs)):
-                self.evaluate(inputs[e])
-                a=self.backprop(outputs[e],alpha)
+                if i%runprint==0:
+                    self.evaluate(inputs[e],True)
+                else:
+                    self.evaluate(inputs[e])
+                self.backprop(outputs[e],alpha)
         print(time.time()-tm)
