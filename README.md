@@ -11,5 +11,6 @@ Currently implemented:
  
  Current Problems:
   - approach limited by missing optimisation.
+  
  Planned Fix:
   - use of the numba library to access the cuda framework and use GPU to make calculations.
