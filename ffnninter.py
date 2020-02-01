@@ -32,7 +32,7 @@ class NNinter(FFNN):
     def __init__(self,layout=False,savefile=False):
         super(NNinter,self).__init__(layout,savefile)
         self.master=Tk()
-        self.w,self.h=(640,480)
+        self.w,self.h=(1600,900)
         self.scr=Canvas(master=self.master,bg="white",width=self.w,height=self.h)
         self.scr.pack()
         self.xstep=self.w/(len(self.neurons)+1)
@@ -61,9 +61,6 @@ class NNinter(FFNN):
                     self.scr.create_line(x1,y1,x2,y2,fill=colorconverter(self.synapses[i][j][k]))
         
         self.scr.update()
-
-    def save(self,savename):
-        super(NNinter,self).save(savename)
     
     def evaluate(self,inputs,draw=False):
         temp=super(NNinter,self).evaluate(inputs)

@@ -13,14 +13,8 @@ import time
 class Backprop_FFNN(NNinter):
     
     def __init__(self, layout=False,savefile=False):
-        super(Backprop_FFNN,self).__init__(layout,savefile)
+        NNinter.__init__(self,layout,savefile)
         self.err="N/A"
-    
-    def save(self,savename):
-        super(Backprop_FFNN,self).save(savename)
-    
-    def evaluate(self, inputs,draw=False):
-        return super(Backprop_FFNN,self).evaluate(inputs,draw)
     
     
     def backprop(self,outputs,alpha):  #backpropagation of the error to adjust weights
