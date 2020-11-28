@@ -6,7 +6,7 @@ Currently implemented:
  - GUI for said networks
  
  Current Problems:
-  - approach limited by missing optimisation.
+  - approach limited by devices available and CPU-based approach.
   
- Planned Fix:
-  - use of the numba library to access the cuda framework and use GPU to make calculations.
+  Planned Fix:
+  - using numba to run on NVIDIA GPU
