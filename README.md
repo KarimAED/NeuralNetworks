@@ -1,14 +1,12 @@
 # NeuralNetworks
 ## Discontinued due to Performance Issues
 
-Contains Neural Network implementation from scratch. A python library mainly designed for my own use. Eventual implementation of various types of neural networks, supervised and unsupervised learning and other machine learning features from scratch.
+Contains Neural Network implementation from scratch. A python library mainly designed for my own use. Feed-Forward Neural Networks (with backpropagation or other learning method) from scratch. Interfaces are also implemented.
 
 Currently implemented:
  - feed-forward neural networks
  - GUI for said networks
  
- Current Problems:
+ Problems:
   - approach limited by devices available and CPU-based approach.
-  
-  Planned Fix:
-  - using numba to run on NVIDIA GPU
+  - limited optimisation
